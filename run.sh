@@ -1,7 +1,20 @@
 #!/bin/bash
 
+# Load environment variables from .env file
+if [ -f .env ]; then
+  export $(grep -v '^#' .env | xargs)
+else
+  echo "Warning: .env file not found."
+fi
+
+# Check if PROJECT_NAME is set
+if [ -z "$PROJECT_NAME" ]; then
+  echo "Error: PROJECT_NAME not defined in .env."
+  exit 1
+fi
+
 CONTAINER_NAME="ide-phpstorm"
-STACK_NAME="project" # TODO use arg / variable .env ?
+STACK_NAME=$PROJECT_NAME
 
 export LOCAL_UID=$(id -u)
 export LOCAL_GID=$(id -g)
