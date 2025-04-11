@@ -22,8 +22,9 @@ export LOCAL_GID=$(id -g)
 start_ide() {
     echo "Starting PHPStorm IDE container..."
     xhost +local:
-
-    docker compose -p $STACK_NAME -f docker-compose.yml -f ide/phpstorm/ide.docker-compose.yml up -d
+    docker compose -p $STACK_NAME -f ide/phpstorm/ide.docker-compose.yml up -d
+    #all stack up
+    #docker compose -p $STACK_NAME -f docker-compose.yml -f ide/phpstorm/ide.docker-compose.yml up -d
     echo "Waiting for container to initialize..."
     sleep 10
     if docker ps | grep -q $CONTAINER_NAME; then
