@@ -10,4 +10,5 @@ RUN wget -qO- https://download.jetbrains.com/webide/PhpStorm-${PHPStorm_VERSION}
 
 RUN mkdir /tmp/PhpStorm && \
         tar -xzf /tmp/PhpStorm.tar.gz -C /tmp/PhpStorm --strip-components=1 && \
+	rm -rf /tmp/* && \
         mv /tmp/PhpStorm /root/
